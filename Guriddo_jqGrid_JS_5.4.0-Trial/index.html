@@ -9,19 +9,37 @@
     <title>Document</title>
 </head>
 <body>
-    <table id= "example"></table>
+
+    <div style = "margin-top : 20px; margin-left : 15px; font-size : 12px;">
+        <select class = "form-control" style = "width : 10%; float : left;" id = "searchType">
+            <option value = "All" selected>검색</option>
+            <option value = "user_date">DATE</option>
+              <option value = "user_name">NAME</option>
+            <option value = "user_amount">AMOUNT</option>
+            <option value = "user_tax">TAX</option>
+        </select>
+        <input type ="text" id = "searchData" class ="form-control" style = "width : 30%; float : left; margin-bottom : 50px; margin-left : 10px;">
+        <button class = "btn btn-info btn-fill" id = "search" value = "검색 " style = "width : 10%; float : left; margin-left : 10px;">
+          검색
+        </button>
+    </div>
+    <div id="jqgrid">
+        <table id="example"></table>
+        <div id="gridpager"></div>
+    </div>
+    
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript"  src="http://trirand.com/blog/jqgrid/js/jquery-ui-custom.min.js"></script>
-    <script src="http://trirand.com/blog/jqgrid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+    <script type="text/javascript"  src="http://trirand.com/blog/jqgrid/js/i18n/grid.locale-en.js" ></script>
     <script type="text/javascript"  src="http://trirand.com/blog/jqgrid/js/ui.multiselect.js"></script>
     <script type="text/javascript"  src="http://trirand.com/blog/jqgrid/js/jquery.jqGrid.js"></script>
     <script type="text/javascript"  src="http://trirand.com/blog/jqgrid/js/jquery.contextmenu.js"></script>
     <script type="text/javascript"  src="http://trirand.com/blog/jqgrid/js/jquery.tablednd.js"></script>
 
     <script>
-       
     jQuery("#example").jqGrid({
-	datatype: "local",
+    url:"1.json",
+	datatype: "JSON",
 	height: 250,
    	colNames:['Inv No','Date', 'Client', 'Amount','Tax','Total','Notes'],
    	colModel:[
@@ -36,19 +54,13 @@
    	multiselect: true,
    	caption: "Manipulating Array Data"
     });
-    var mydata = [
-		{id:"1",invdate:"2007-10-01",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
-		{id:"2",invdate:"2007-10-02",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
-		{id:"3",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
-		{id:"4",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
-		{id:"5",invdate:"2007-10-05",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
-		{id:"6",invdate:"2007-09-06",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
-		{id:"7",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
-		{id:"8",invdate:"2007-10-03",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
-		{id:"9",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"}
-		];
-    for(var i=0;i<=mydata.length;i++)
-	jQuery("#example").jqGrid('addRowData',i+1,mydata[i]);
+   	
+
+   
+    
+
     </script>
+
+
 </body>
 </html>
